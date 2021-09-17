@@ -5,7 +5,7 @@
 
 ## Edited by Neolix:
 To deploy with tensorrt, we modified demo_inference.py to first export as onnx model.
-You can use colab to export model without installing any environment.
+You can use [colab of huxi](https://colab.research.google.com/drive/10Oq1S9PC6zU5Qzeri0ZiFtJjeIb-ynjF?usp=sharing) to export model without installing any environment.
 
 Below is the original README.
 
