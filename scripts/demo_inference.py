@@ -244,6 +244,24 @@ if __name__ == "__main__":
                     inps_j = inps[j * batchSize:min((j + 1) * batchSize, datalen)]
                     if args.flip:
                         inps_j = torch.cat((inps_j, flip(inps_j)))
+                        
+                    # === added by huxi === #
+                    import torch.onnx
+                    x = torch.zeros_like(inps_j, requires_grad=True)
+                    torch_out = pose_model(x)
+                    # Export the model
+                    torch.onnx.export(pose_model,               # model being run
+                                      x,                         # model input (or a tuple for multiple inputs)
+                                      "alphapose_neolix.onnx",   # where to save the model (can be a file or file-like object)
+                                      export_params=True,        # store the trained parameter weights inside the model file
+                                      opset_version=10,          # the ONNX version to export the model to
+                                      do_constant_folding=True,  # whether to execute constant folding for optimization
+                                      input_names = ['input'],   # the model's input names
+                                      output_names = ['output'], # the model's output names
+                                      dynamic_axes={'input' : {0 : 'batch_size'},    # variable length axes
+                                                    'output' : {0 : 'batch_size'}})
+                    # === added by huxi === #
+                    
                     hm_j = pose_model(inps_j)
                     if args.flip:
                         hm_j_flip = flip_heatmap(hm_j[int(len(hm_j) / 2):], pose_dataset.joint_pairs, shift=True)
