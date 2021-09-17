@@ -4,7 +4,8 @@
 </div>
 
 ## Edited by Neolix:
-To deploy with tensorrt, we modified inference_demo.py to first export as onnx model.
+To deploy with tensorrt, we modified demo_inference.py to first export as onnx model.
+You can use colab to export model without installing any environment.
 
 Below is the original README.
 
