@@ -3,6 +3,10 @@
     <img src="docs/logo.jpg", width="400">
 </div>
 
+## Edited by Neolix:
+To deploy with tensorrt, we modified inference_demo.py to first export as onnx model.
+
+Below is the original README.
 
 ## News!
 - Aug 2020: [**v0.4.0** version](https://github.com/MVIG-SJTU/AlphaPose) of AlphaPose is released! Stronger tracking! Include whole body(face,hand,foot) keypoints! [Colab](https://colab.research.google.com/drive/14Zgotr2_F0LfvcpRi03uQdMvUbLQSgok?usp=sharing) now available.
