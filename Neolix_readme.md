@@ -3,7 +3,8 @@
 ## 1. 模型转 trt engine
 alphapose模型本身的介绍可以参考这篇[论文](https://arxiv.org/abs/1612.00137)，以及对应的 [git repo]()。如果只考虑需要部署，可以直接使用我们的 [google lab](https://colab.research.google.com/drive/10Oq1S9PC6zU5Qzeri0ZiFtJjeIb-ynjF?usp=sharing)
 环境，执行完毕即可得到 alphapose_neolix.onnx 文件。现有的已经转换好的模型存放在服务器：/nfs/nas/model_release/alphapose/alphapose.onnx 上。
-由于 alphapose 模型本身的算子在trt中都支持，所以从 onnx 转换 engine 还比较方便，fp32 和 fp16 模型，既可以通过
+由于 alphapose 模型本身的算子在trt中都支持，所以从 onnx 转换 engine 还比较方便，fp32 和 fp16 模型，可以通过两种方式获得：
+
 #### (1) trtexec 工具转换，使用如下指令：
 
 ``` bash
@@ -14,7 +15,7 @@ alphapose模型本身的介绍可以参考这篇[论文](https://arxiv.org/abs/1
 ./trtexec --onnx=alphapose.onnx --saveEngine=alphapose_fp16.engine --fp16
 ```
 
-#### (2) 也可以通过代码的方式进行转换 
+#### (2) 代码的方式进行转换 
 参考 [perception-model @ neolix](https://github.com/neolixcn/perception-models/tree/master/tools/TensorRT_implementer) 的readme 文档，
 修改 config.h 中的配置参数，如输入输出名字，模型精度，onnx模型位置等即可。
 
